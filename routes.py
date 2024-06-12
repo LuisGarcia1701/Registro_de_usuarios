@@ -13,6 +13,7 @@ def register():
             first_name = request.form['first_name']
             last_name = request.form['last_name']
             email = request.form['email']
+            phone = request.form['phone']
             password = request.form['password']
             address = request.form['address']
             city = request.form['city']
@@ -39,6 +40,15 @@ def register():
             email_pattern = re.compile(r'^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$')
             if not email_pattern.match(email):
                 flash('Invalid email format.')
+                return redirect(url_for('main.register'))
+
+            if User.query.filter_by(phone=phone).first():
+                flash('Phone numer already registered.')
+                return redirect(url_for('main.register'))
+
+            phone_pattern = re.compile(r'^[+]+[0-9]{10,12}$')
+            if not phone_pattern.match(phone):
+                flash('Invalid phone format')
                 return redirect(url_for('main.register'))
 
             password_pattern = re.compile(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
@@ -83,6 +93,7 @@ def register():
                 first_name=first_name,
                 last_name=last_name,
                 email=email,
+                phone=phone,
                 address=address,
                 city=city,
                 state=state,
@@ -113,6 +124,7 @@ def profile(user_id):
         try:
             user.first_name = request.form['first_name']
             user.last_name = request.form['last_name']
+            user.phone = request.form['phone']
             user.address = request.form['address']
             user.city = request.form['city']
             user.state = request.form['state']
