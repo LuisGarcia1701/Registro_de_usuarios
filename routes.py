@@ -78,15 +78,15 @@ def register():
                 return redirect(url_for('main.register'))
 
             if not area or len(area) > 100:
-                flash('Area is required and should not exceed 100 characters.')
+                flash('Area should not exceed 100 characters.')
                 return redirect(url_for('main.register'))
 
             if not group or len(group) > 100:
-                flash('Group is required and should not exceed 100 characters.')
+                flash('Group should not exceed 100 characters.')
                 return redirect(url_for('main.register'))
 
             if not department or len(department) > 100:
-                flash('Department is required and should not exceed 100 characters.')
+                flash('Department should not exceed 100 characters.')
                 return redirect(url_for('main.register'))
 
             user = User(
