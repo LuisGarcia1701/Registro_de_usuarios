@@ -54,7 +54,8 @@ def test_register_duplicate_email(client):
     user = User(
         first_name='Jane',
         last_name='Doe',
-        email='jane.doe@example.com'
+        email='jane.doe@example.com',
+        phone='1234567890'
     )
     user.set_password('Password123!')
     db.session.add(user)
@@ -77,11 +78,58 @@ def test_register_duplicate_email(client):
     }, follow_redirects=True)
     assert b'Email already registered.' in response.data
 
+def test_register_invalid_phone(client):
+    response = client.post('/register', data={
+        'first_name': 'John',
+        'last_name': 'Doe',
+        'email': 'john.doe@com',
+        'phone': '1234567890',
+        'password': 'Password123!',
+        'address': '123 Main St',
+        'city': 'Anytown',
+        'state': 'CA',
+        'zip_code': '12345',
+        'country': 'USA',
+        'area': 'IT',
+        'group': 'Development',
+        'department': 'Software'
+    }, follow_redirects=True)
+    assert b'Invalid phone format.' in response.data
+
+def test_register_duplicate_phone(client):
+    user = User(
+        first_name='Jane',
+        last_name='Doe',
+        email='jane.doe@example.com',
+        phone='1234567890'
+    )
+    user.set_password('Password123!')
+    db.session.add(user)
+    db.session.commit()
+
+    response = client.post('/register', data={
+        'first_name': 'John',
+        'last_name': 'Doe',
+        'email': 'jane.doe@example.com',
+        'phone': '1234567890',
+        'password': 'Password123!',
+        'address': '123 Main St',
+        'city': 'Anytown',
+        'state': 'CA',
+        'zip_code': '12345',
+        'country': 'USA',
+        'area': 'IT',
+        'group': 'Development',
+        'department': 'Software'
+    }, follow_redirects=True)
+    assert b'Phone already registered.' in response.data
+
 def test_profile_update(client):
     user = User(
         first_name='John',
         last_name='Doe',
-        email='john.doe@example.com'
+        email='john.doe@example.com',
+        phone='1234567890'
     )
     user.set_password('Password123!')
     db.session.add(user)
@@ -109,7 +157,8 @@ def test_delete_user(client):
     user = User(
         first_name='John',
         last_name='Doe',
-        email='john.doe@example.com'
+        email='john.doe@example.com',
+        phone='1234567890'
     )
     user.set_password('Password123!')
     db.session.add(user)

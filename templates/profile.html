@@ -1,20 +1,30 @@
-{% extends "layout.html" %}
-
-{% block title %}Profile{% endblock %}
-
-{% block content %}
-<h2>Profile</h2>
-<form method="POST" action="{{ url_for('main.profile', user_id=user.id) }}">
-    <input type="text" name="first_name" placeholder="First Name" value="{{ user.first_name }}" required>
-    <input type="text" name="last_name" placeholder="Last Name" value="{{ user.last_name }}" required>
-    <input type="text" name="address" placeholder="Address" value="{{ user.address }}">
-    <input type="text" name="city" placeholder="City" value="{{ user.city }}">
-    <input type="text" name="state" placeholder="State" value="{{ user.state }}">
-    <input type="text" name="zip_code" placeholder="Zip Code" value="{{ user.zip_code }}">
-    <input type="text" name="country" placeholder="Country" value="{{ user.country }}">
-    <input type="text" name="area" placeholder="Area" value="{{ user.area }}">
-    <input type="text" name="group" placeholder="Group" value="{{ user.group }}">
-    <input type="text" name="department" placeholder="Department" value="{{ user.department }}">
-    <button type="submit">Update Profile</button>
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de personas</title>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+    <body>
+        <nav>
+            <a href="register.html">Register</a>
+            <a href="login.html">Login</a>
+            <a href="admin.html">Admin</a>
+        </nav>
+        <h2>Profile</h2>
+        <form method="POST" action="{{ url_for('main.profile', user_id=user.id) }}">
+            <input type="text" name="first_name" placeholder="First Name" value="{{ user.first_name }}" required>
+            <input type="text" name="last_name" placeholder="Last Name" value="{{ user.last_name }}" required>
+            <input type="text" name="address" placeholder="Address" value="{{ user.address }}">
+            <input type="text" name="city" placeholder="City" value="{{ user.city }}">
+            <input type="text" name="state" placeholder="State" value="{{ user.state }}">
+            <input type="text" name="zip_code" placeholder="Zip Code" value="{{ user.zip_code }}">
+            <input type="text" name="country" placeholder="Country" value="{{ user.country }}">
+            <input type="text" name="area" placeholder="Area" value="{{ user.area }}">
+            <input type="text" name="group" placeholder="Group" value="{{ user.group }}">
+            <input type="text" name="department" placeholder="Department" value="{{ user.department }}">
+            <button type="submit">Update Profile</button>
+        </form>
+    </body>
+</html>

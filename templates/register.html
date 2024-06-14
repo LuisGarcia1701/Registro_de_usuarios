@@ -1,22 +1,33 @@
-{% extends "layout.html" %}
-
-{% block title %}Register{% endblock %}
-
-{% block content %}
-<h2>Register</h2>
-<form method="POST" action="{{ url_for('main.register') }}">
-    <input type="text" name="first_name" placeholder="First Name" required>
-    <input type="text" name="last_name" placeholder="Last Name" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="text" name="address" placeholder="Address">
-    <input type="text" name="city" placeholder="City">
-    <input type="text" name="state" placeholder="State">
-    <input type="text" name="zip_code" placeholder="Zip Code">
-    <input type="text" name="country" placeholder="Country">
-    <input type="text" name="area" placeholder="Area">
-    <input type="text" name="group" placeholder="Group">
-    <input type="text" name="department" placeholder="Department">
-    <button type="submit">Register</button>
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de personas</title>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+    <nav>
+            <a href="layout.html">Inicio</a>
+            <a href="login.html">Login</a>
+            <a href="admin.html">Admin</a>
+        </nav>
+    <h2>Register</h2>
+    <form method="POST" action="{{ url_for('main.register') }}">
+        <input type="text" name="first_name" placeholder="First Name" required>
+        <input type="text" name="last_name" placeholder="Last Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="phone" name="phone" placeholder="Phone number" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="text" name="address" placeholder="Address">
+        <input type="text" name="city" placeholder="City">
+        <input type="text" name="state" placeholder="State">
+        <input type="text" name="zip_code" placeholder="Zip Code">
+        <input type="text" name="country" placeholder="Country">
+        <input type="text" name="area" placeholder="Area">
+        <input type="text" name="group" placeholder="Group">
+        <input type="text" name="department" placeholder="Department">
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My App{% endblock %}</title>
+    <title>Registro de personas</title>
     <link rel="stylesheet" href="/style/style.css">
 </head>
 <body>
@@ -13,16 +13,16 @@
         <a href="admin.html">Admin</a>
     </nav>
     <div class="container">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
+
                 <ul class="flashes">
-                    {% for category, message in messages %}
-                        <li class="{{ category }}">{{ message }}</li>
-                    {% endfor %}
+                    En esta pafina podras registrarte con las siguientes condiciones.
+                    Desbes agregar:
+                        <li>Nombre</li>
+                        <li>Apellido</li>
+                        <li>Correo electrónico</li>
+                        <li>Número telefónico</li>
+                        <li>Contraseña</li>
                 </ul>
-            {% endif %}
-        {% endwith %}
-        {% block content %}{% endblock %}
     </div>
 </body>
 </html>
